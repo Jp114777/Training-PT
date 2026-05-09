@@ -1,5 +1,16 @@
 import React from 'react';
-import { AlertCircle, Target, Eye } from 'lucide-react';
+import { AlertCircle, Target, Eye, ShieldAlert } from 'lucide-react';
+
+const INJURY_LABELS = {
+  shoulder: 'shoulder',
+  lower_back: 'lower back',
+  knee: 'knee',
+  hip: 'hip',
+  wrist: 'wrist',
+  ankle: 'ankle',
+  neck: 'neck',
+  elbow: 'elbow',
+};
 
 export default function ClientHeader({ plan, readOnly = false }) {
   const initials = plan.client.name
@@ -32,6 +43,15 @@ export default function ClientHeader({ plan, readOnly = false }) {
             <Target className="h-4 w-4 text-accent-500" />
             <span className="font-medium">{plan.client.goalSummary}</span>
           </div>
+          {plan.client.currentInjuryAreas?.length > 0 && (
+            <div className="flex items-center gap-1.5 mt-1.5 text-sm text-amber-700 dark:text-amber-300">
+              <ShieldAlert className="h-3.5 w-3.5" />
+              <span>
+                Working around:{' '}
+                {plan.client.currentInjuryAreas.map((a) => INJURY_LABELS[a] || a).join(', ')}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

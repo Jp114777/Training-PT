@@ -1,21 +1,46 @@
 import React, { useState } from 'react';
 import Card, { CardHeader, CardBody } from '../../ui/Card.jsx';
-import { Dumbbell, Play, ChevronRight } from 'lucide-react';
+import { Dumbbell, Play, ChevronRight, Flame, Sparkles } from 'lucide-react';
 
 export default function WorkoutPlan({ plan }) {
   const [open, setOpen] = useState(null); // exerciseKey
 
+  const adaptations = plan.workout.adaptations || [];
+  const goalShape = plan.workout.goalShape;
+
   return (
     <div className="space-y-5">
-      <div className="flex items-end justify-between">
-        <div>
-          <h2 className="text-2xl font-semibold text-ink-900 dark:text-ink-50">{plan.workout.name}</h2>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <h2 className="text-2xl font-semibold text-ink-900 dark:text-ink-50">{plan.workout.name}</h2>
+            {goalShape && (
+              <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-accent-100 text-accent-700 dark:bg-accent-500/10 dark:text-accent-300">
+                <Sparkles className="h-3 w-3" />
+                {goalShape}
+              </span>
+            )}
+          </div>
           <p className="text-ink-500 dark:text-ink-400 mt-1">{plan.workout.description}</p>
         </div>
         <div className="text-sm text-ink-500 dark:text-ink-400">
           {plan.daysPerWeek} days/week · {plan.workoutDuration} min sessions
         </div>
       </div>
+
+      {adaptations.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs uppercase tracking-wide text-ink-400 dark:text-ink-500">Adapted for:</span>
+          {adaptations.map((a, i) => (
+            <span
+              key={i}
+              className="text-xs font-medium px-2.5 py-1 rounded-full bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-200"
+            >
+              {a}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="grid lg:grid-cols-2 gap-5">
         {plan.workout.days.map((day, idx) => (
@@ -30,20 +55,41 @@ export default function WorkoutPlan({ plan }) {
                 {day.exercises.map((ex, i) => {
                   const k = `${idx}-${i}`;
                   const isOpen = open === k;
+                  const isFinisher = ex.priority === 'finisher';
                   return (
                     <div key={k}>
                       <button
                         onClick={() => setOpen(isOpen ? null : k)}
-                        className="w-full grid grid-cols-12 gap-3 items-center px-3 py-2.5 rounded-xl text-left hover:bg-ink-50 dark:hover:bg-ink-800/50 transition-colors"
+                        className={`w-full grid grid-cols-12 gap-3 items-start px-3 py-2.5 rounded-xl text-left transition-colors
+                          ${isFinisher
+                            ? 'bg-amber-50 hover:bg-amber-100 dark:bg-amber-500/10 dark:hover:bg-amber-500/20 border border-amber-200 dark:border-amber-500/20'
+                            : 'hover:bg-ink-50 dark:hover:bg-ink-800/50'}
+                        `}
                       >
-                        <div className="col-span-6 sm:col-span-5 font-medium text-ink-900 dark:text-ink-50 flex items-center gap-2">
-                          <ChevronRight className={`h-4 w-4 text-ink-400 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
-                          {ex.name}
+                        <div className="col-span-6 sm:col-span-5 font-medium text-ink-900 dark:text-ink-50 flex items-start gap-2">
+                          {isFinisher ? (
+                            <Flame className="h-4 w-4 text-amber-600 dark:text-amber-300 mt-0.5 shrink-0" />
+                          ) : (
+                            <ChevronRight className={`h-4 w-4 text-ink-400 mt-0.5 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+                          )}
+                          <div className="min-w-0">
+                            <div className="truncate">{ex.name}</div>
+                            {ex.pickedReason && (
+                              <div className="text-[11px] text-accent-600 dark:text-accent-300 font-normal mt-0.5">
+                                {ex.pickedReason}
+                              </div>
+                            )}
+                            {isFinisher && (
+                              <div className="text-[11px] text-amber-700 dark:text-amber-300 font-normal mt-0.5">
+                                Metabolic finisher · added for fat loss
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <div className="col-span-3 sm:col-span-3 text-sm text-ink-600 dark:text-ink-300">
+                        <div className="col-span-3 sm:col-span-3 text-sm text-ink-600 dark:text-ink-300 pt-0.5">
                           {ex.sets} × {ex.reps}
                         </div>
-                        <div className="col-span-3 sm:col-span-4 text-sm text-ink-400 text-right">
+                        <div className="col-span-3 sm:col-span-4 text-sm text-ink-400 text-right pt-0.5">
                           rest {ex.rest}
                         </div>
                       </button>

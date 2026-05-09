@@ -7,8 +7,8 @@ import {
   calculateBMI,
   projectTimeline,
 } from './calculations.js';
-import { SPLITS } from '../mockData/workouts.js';
 import { buildWeek, mealPlanName, isoWeek, applyOverrides } from '../mockData/meals.js';
+import { assembleWorkout } from './workoutAssembler.js';
 import { SUBSTITUTIONS } from '../mockData/substitutions.js';
 import { pickSupplements } from '../mockData/supplements.js';
 import { pickCookbooks } from '../mockData/cookbooks.js';
@@ -59,9 +59,10 @@ export function generatePlan(intake) {
     urgency: intake.urgency,
   });
 
-  // Pick the closest split
+  // Build the per-client workout
   const days = Number(intake.daysPerWeek) || 4;
-  const split = SPLITS[days] || SPLITS[Math.min(6, Math.max(2, days))] || SPLITS[4];
+  const workoutSeed = `${intake.savedId || intake.fullName || 'guest'}-${target.kind}-workout-${days}`;
+  const split = assembleWorkout(intake, days, workoutSeed);
 
   // Per-client + per-week seed → unique plan for each client that rotates each ISO week.
   const now = new Date();
@@ -99,6 +100,8 @@ export function generatePlan(intake) {
       age: intake.age,
       weight: { lb: weightLb, kg: weightKg, unit: intake.weightUnit },
       height: { cm: heightCm, unit: intake.heightUnit },
+      currentInjuryAreas: intake.currentInjuryAreas || [],
+      currentInjuryNotes: intake.currentInjuryNotes || '',
     },
     stats: {
       bmr,
