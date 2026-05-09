@@ -92,11 +92,13 @@ export function assembleWorkout(intake, daysPerWeek, seedKey = 'default') {
       usedIds.add(pick.exercise.id);
       if (pick.reason) adaptationsTriggered.add(pick.reason);
       exercises.push({
+        id: pick.exercise.id,
         name: pick.exercise.name,
         sets: block.sets,
         reps: block.reps,
         rest: block.rest,
         notes: pick.exercise.repCue,
+        howTo: pick.exercise.howTo || [],
         pickedReason: pick.reason,
         priority: block.priority,
       });

@@ -94,11 +94,26 @@ export default function WorkoutPlan({ plan }) {
                         </div>
                       </button>
                       {isOpen && (
-                        <div className="ml-7 mr-2 mb-2 rounded-2xl bg-ink-50 dark:bg-ink-800/50 border border-ink-100 dark:border-ink-700 p-3 animate-fadeIn">
+                        <div className="ml-7 mr-2 mb-2 rounded-2xl bg-ink-50 dark:bg-ink-800/50 border border-ink-100 dark:border-ink-700 p-4 animate-fadeIn space-y-3">
                           {ex.notes && (
-                            <div className="text-sm text-ink-700 dark:text-ink-200 mb-2">
-                              <span className="text-xs uppercase tracking-wide text-ink-400 mr-2">Notes</span>
+                            <div className="text-sm text-ink-700 dark:text-ink-200">
+                              <span className="text-xs uppercase tracking-wide text-ink-400 mr-2">Tempo</span>
                               {ex.notes}
+                            </div>
+                          )}
+                          {ex.howTo && ex.howTo.length > 0 && (
+                            <div>
+                              <div className="text-xs uppercase tracking-wide text-ink-400 dark:text-ink-500 mb-2">How to do it</div>
+                              <ol className="space-y-1.5">
+                                {ex.howTo.map((step, si) => (
+                                  <li key={si} className="flex gap-2.5 text-sm text-ink-700 dark:text-ink-200 leading-relaxed">
+                                    <span className="shrink-0 h-5 w-5 rounded-full bg-accent-500/15 text-accent-700 dark:text-accent-300 text-[11px] font-semibold flex items-center justify-center mt-0.5">
+                                      {si + 1}
+                                    </span>
+                                    <span>{step}</span>
+                                  </li>
+                                ))}
+                              </ol>
                             </div>
                           )}
                           <div className="aspect-video rounded-xl bg-gradient-to-br from-ink-200 to-ink-100 dark:from-ink-700 dark:to-ink-800 flex items-center justify-center text-ink-500 dark:text-ink-400">
