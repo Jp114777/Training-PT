@@ -13,9 +13,14 @@ export const SECTIONS = [
   { id: 'cookbooks', label: 'Cookbook Library', icon: BookOpen },
 ];
 
-export default function Sidebar({ active, onChange, onReset, readOnly = false }) {
+export default function Sidebar({ active, onChange, onReset, readOnly = false, mobile = false }) {
+  // Desktop: stick to the side, hidden under md.
+  // Mobile drawer: fill the drawer's box, always visible (parent controls width/position).
+  const containerClass = mobile
+    ? 'flex flex-col w-full h-full bg-white dark:bg-ink-900 px-4 py-6 overflow-y-auto'
+    : 'hidden md:flex flex-col w-64 shrink-0 h-[calc(100vh-3.5rem)] sticky top-14 bg-white dark:bg-ink-900 border-r border-ink-100 dark:border-ink-800 px-4 py-6';
   return (
-    <aside className="hidden md:flex flex-col w-64 shrink-0 h-[calc(100vh-3.5rem)] sticky top-14 bg-white dark:bg-ink-900 border-r border-ink-100 dark:border-ink-800 px-4 py-6">
+    <aside className={containerClass}>
       <div className="flex items-center gap-2.5 px-2 mb-8">
         <div className="h-9 w-9 rounded-xl bg-ink-900 text-white flex items-center justify-center dark:bg-white dark:text-ink-900">
           <Activity className="h-4 w-4" strokeWidth={2.4} />

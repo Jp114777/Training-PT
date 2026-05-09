@@ -41,9 +41,13 @@ export function DashboardShell({ plan, onReset, readOnly = false }) {
       />
 
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black/30" onClick={() => setMobileOpen(false)}>
-          <div onClick={(e) => e.stopPropagation()} className="absolute left-0 top-0 bottom-0 w-72 bg-white dark:bg-ink-900">
+        <div className="md:hidden fixed inset-0 top-14 z-30 bg-black/40 backdrop-blur-sm animate-fadeIn" onClick={() => setMobileOpen(false)}>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-white dark:bg-ink-900 shadow-lift animate-slideIn"
+          >
             <Sidebar
+              mobile
               active={active}
               onChange={(id) => { setActive(id); setMobileOpen(false); }}
               onReset={onReset}
