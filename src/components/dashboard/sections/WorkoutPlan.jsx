@@ -60,20 +60,20 @@ export default function WorkoutPlan({ plan }) {
                     <div key={k}>
                       <button
                         onClick={() => setOpen(isOpen ? null : k)}
-                        className={`w-full grid grid-cols-12 gap-3 items-start px-3 py-2.5 rounded-xl text-left transition-colors
+                        className={`w-full flex flex-wrap items-start gap-x-3 gap-y-1 px-3 py-2.5 rounded-xl text-left transition-colors
                           ${isFinisher
                             ? 'bg-amber-50 hover:bg-amber-100 dark:bg-amber-500/10 dark:hover:bg-amber-500/20 border border-amber-200 dark:border-amber-500/20'
                             : 'hover:bg-ink-50 dark:hover:bg-ink-800/50'}
                         `}
                       >
-                        <div className="col-span-6 sm:col-span-5 font-medium text-ink-900 dark:text-ink-50 flex items-start gap-2">
+                        <div className="flex items-start gap-2 flex-1 min-w-0 basis-full sm:basis-0 font-medium text-ink-900 dark:text-ink-50">
                           {isFinisher ? (
                             <Flame className="h-4 w-4 text-amber-600 dark:text-amber-300 mt-0.5 shrink-0" />
                           ) : (
-                            <ChevronRight className={`h-4 w-4 text-ink-400 mt-0.5 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+                            <ChevronRight className={`h-4 w-4 text-ink-400 mt-0.5 shrink-0 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
                           )}
-                          <div className="min-w-0">
-                            <div className="truncate">{ex.name}</div>
+                          <div className="min-w-0 flex-1">
+                            <div className="break-words">{ex.name}</div>
                             {ex.pickedReason && (
                               <div className="text-[11px] text-accent-600 dark:text-accent-300 font-normal mt-0.5">
                                 {ex.pickedReason}
@@ -86,10 +86,10 @@ export default function WorkoutPlan({ plan }) {
                             )}
                           </div>
                         </div>
-                        <div className="col-span-3 sm:col-span-3 text-sm text-ink-600 dark:text-ink-300 pt-0.5">
+                        <div className="text-sm text-ink-600 dark:text-ink-300 pt-0.5 shrink-0 ml-7 sm:ml-0 tabular-nums whitespace-nowrap">
                           {ex.sets} × {ex.reps}
                         </div>
-                        <div className="col-span-3 sm:col-span-4 text-sm text-ink-400 text-right pt-0.5">
+                        <div className="text-sm text-ink-400 pt-0.5 shrink-0 tabular-nums whitespace-nowrap">
                           rest {ex.rest}
                         </div>
                       </button>
