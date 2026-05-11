@@ -2,6 +2,7 @@
 // macroDiff: rough per-equivalent-serving comparison.
 
 export const SUBSTITUTIONS = [
+  // ── Original 20 ────────────────────────────────────────────
   { from: 'White rice', to: 'Jasmine rice (well-cooked, cooled & reheated)', why: 'Better satiety and resistant starch when cooled overnight.', macroDiff: 'Similar kcal, ~30% lower glycemic load' },
   { from: 'Regular pasta', to: 'Chickpea pasta', why: 'Roughly 2× protein and 3× fiber for the same volume.', macroDiff: '+12g protein / +8g fiber per cup' },
   { from: 'Bread (white)', to: 'Sourdough or Ezekiel', why: 'Slower digestion and less of a glucose spike.', macroDiff: 'Similar kcal, +2–4g fiber, +2g protein' },
@@ -22,4 +23,90 @@ export const SUBSTITUTIONS = [
   { from: 'Croutons', to: 'Roasted chickpeas', why: 'Crunch + 7g protein per ¼ cup.', macroDiff: '+7g protein / +4g fiber per ¼ cup' },
   { from: 'Cream cheese', to: 'Whipped cottage cheese', why: 'Same spread, much more protein.', macroDiff: '+10g protein / −60 kcal per 2 tbsp' },
   { from: 'Sugar in coffee', to: 'Cinnamon + monk fruit', why: 'Removes 24 kcal per teaspoon — small but daily.', macroDiff: '−24 kcal per tsp' },
+
+  // ── Carbs / Grains ─────────────────────────────────────────
+  { from: 'White rice', to: 'Cauliflower rice', why: 'Drops almost all the carbs while keeping the vehicle for whatever sauce is on top.', macroDiff: '−180 kcal / −40g carbs per cup' },
+  { from: 'White rice', to: 'Brown rice', why: 'More fiber and a slower glucose curve for the same portion.', macroDiff: '+3g fiber / similar kcal per cup' },
+  { from: 'Couscous', to: 'Quinoa', why: 'Quinoa is a complete protein and digests slower.', macroDiff: '+5g protein / +3g fiber per cup' },
+  { from: 'Couscous', to: 'Pearl barley', why: 'Higher fiber, much better satiety.', macroDiff: '+4g fiber per cup' },
+  { from: 'Pasta', to: 'Zucchini noodles (zoodles)', why: 'Cuts the bulk of the carbs when you just need a sauce vehicle.', macroDiff: '−180 kcal / −38g carbs per cup' },
+  { from: 'Pasta', to: 'Spaghetti squash', why: 'Long stringy texture, fraction of the calories.', macroDiff: '−150 kcal / −30g carbs per cup' },
+  { from: 'Pasta', to: 'Lentil pasta', why: 'Plant protein boost without changing how the dish eats.', macroDiff: '+10g protein / +6g fiber per cup' },
+  { from: 'Flour tortilla', to: 'Whole-grain wrap', why: 'More fiber, similar texture, holds fillings the same.', macroDiff: '+3g fiber / similar kcal' },
+  { from: 'Flour tortilla', to: 'Low-carb / cassava tortilla', why: 'Big drop in carbs when you\'re trying to fit a wrap into a cut.', macroDiff: '−80 kcal / −20g carbs per tortilla' },
+  { from: 'Pita bread', to: 'Whole-wheat pita', why: 'Same convenience, denser, more filling.', macroDiff: '+3g fiber per pita' },
+  { from: 'Rice noodles', to: 'Shirataki noodles', why: 'Near-zero calories — great for stir-fries during a cut.', macroDiff: '−180 kcal per serving' },
+  { from: 'Hamburger bun', to: 'Whole-grain thin bun', why: 'Half the carbs and still holds a burger together.', macroDiff: '−80 kcal / −15g carbs per bun' },
+  { from: 'Croissant', to: 'Whole-grain toast + butter', why: 'Same buttery feel, fraction of the saturated fat.', macroDiff: '−200 kcal / −15g fat per serving' },
+  { from: 'Saltine crackers', to: 'Brown rice cakes', why: 'Lower-calorie crunch with similar mouthfeel.', macroDiff: '−40 kcal per 5 crackers' },
+  { from: 'White flour pancake mix', to: 'Oat flour or protein pancake mix', why: 'Anchors breakfast carbs with real protein.', macroDiff: '+15g protein / +3g fiber per stack' },
+
+  // ── Snacks / Sweets ────────────────────────────────────────
+  { from: 'Potato chips', to: 'Roasted edamame', why: 'Crunchy and salty with real protein behind it.', macroDiff: '+10g protein / similar kcal per oz' },
+  { from: 'Pretzels', to: 'Roasted almonds', why: 'Satiety from fat and protein beats pure carb crunch.', macroDiff: '+5g protein / +5g fat per oz (more satiating)' },
+  { from: 'Crackers + cheese', to: 'Apple slices + cheese', why: 'Same flavor pairing, real fruit instead of refined carbs.', macroDiff: '+3g fiber / similar kcal' },
+  { from: 'Chocolate candy bar', to: '1 scoop whey + 1 square dark chocolate', why: 'Same chocolate fix, real protein.', macroDiff: '+22g protein / −150 kcal' },
+  { from: 'Cookies', to: 'Protein cookies (or 2 squares dark chocolate)', why: 'Hits the sweet craving with macros that don\'t derail the day.', macroDiff: '+10g protein / −120 kcal per serving' },
+  { from: 'Granola bar', to: 'Protein bar (<10g sugar)', why: 'Most granola bars are dessert with a halo. Pick a real protein bar.', macroDiff: '+15g protein / −10g sugar per bar' },
+  { from: 'Fruit snacks', to: 'Real fruit + Greek yogurt', why: 'Same sweetness, actual nutrients.', macroDiff: '+12g protein / +3g fiber' },
+  { from: 'Donut', to: 'Coffee + a protein bar', why: 'Same morning routine, doesn\'t cost you the deficit.', macroDiff: '−250 kcal / +15g protein' },
+  { from: 'Cake slice', to: 'Protein mug cake', why: 'Microwave-fast dessert that fits a cut.', macroDiff: '+20g protein / −200 kcal' },
+  { from: 'Trail mix (sweet)', to: 'Mixed nuts + dark chocolate chips', why: 'Skip the dried fruit sugar bomb.', macroDiff: '−10g sugar / similar kcal' },
+  { from: 'Pop-Tarts', to: 'Greek yogurt + granola + jam', why: 'Same sweet-breakfast vibe with real protein.', macroDiff: '+18g protein / +2g fiber' },
+
+  // ── Drinks ─────────────────────────────────────────────────
+  { from: 'Frappuccino', to: 'Iced coffee + 1 tsp honey', why: 'Caffeine fix without the 400-kcal dessert hidden in it.', macroDiff: '−350 kcal per 16 oz' },
+  { from: 'Energy drink', to: 'Cold brew + electrolyte tablet', why: 'Real caffeine, no sugar coma three hours later.', macroDiff: '−150 kcal / 0 sugar' },
+  { from: 'Sweet tea', to: 'Unsweetened iced tea + lemon', why: 'Most sweet tea has more sugar than soda. Just dropping it is the swap.', macroDiff: '−180 kcal per 16 oz' },
+  { from: 'Orange juice', to: 'Whole orange + glass of water', why: 'Whole fruit fills you up, juice spikes you fast.', macroDiff: '−60 kcal / +3g fiber' },
+  { from: 'Chocolate milk', to: 'Whey + cocoa powder + skim milk', why: 'Recovery drink at home, fraction of the sugar.', macroDiff: '+18g protein / −15g sugar' },
+  { from: 'Sweetened almond milk', to: 'Unsweetened almond milk', why: 'Same milk swap people make for ethics — keep going and drop the sugar too.', macroDiff: '−7g sugar / −40 kcal per cup' },
+  { from: 'Hot chocolate (mix)', to: 'Cocoa powder + whey + steamed milk', why: 'Real cocoa, real protein, no industrial powder.', macroDiff: '+18g protein / −10g sugar' },
+  { from: 'Margarita', to: 'Tequila + soda water + lime', why: 'Same flavor profile, fraction of the calories.', macroDiff: '−300 kcal per drink' },
+  { from: 'Wine cooler', to: 'Dry wine + soda water', why: 'Spritzer cuts the sugar that ruins most coolers.', macroDiff: '−80 kcal / −15g sugar per drink' },
+  { from: 'Lemonade', to: 'Sparkling water + lemon + 1 tsp honey', why: 'Same tart-sweet, none of the syrup.', macroDiff: '−140 kcal per 12 oz' },
+
+  // ── Condiments / Sauces ────────────────────────────────────
+  { from: 'Ranch dressing', to: 'Greek yogurt + ranch seasoning packet', why: 'Same ranch flavor, real protein behind it.', macroDiff: '+5g protein / −80 kcal per 2 tbsp' },
+  { from: 'Caesar dressing', to: 'Light Caesar or Greek-yogurt Caesar', why: 'Same flavor profile, much less oil.', macroDiff: '−80 kcal per 2 tbsp' },
+  { from: 'BBQ sauce', to: 'Sugar-free BBQ sauce (G. Hughes or similar)', why: 'BBQ is mostly sugar — sub a sugar-free version 1:1.', macroDiff: '−60 kcal / −12g sugar per ¼ cup' },
+  { from: 'Ketchup', to: 'Low-sugar ketchup or salsa', why: 'Ketchup is sneaky sugar. Salsa is a free upgrade for protein dishes.', macroDiff: '−15g sugar per ¼ cup' },
+  { from: 'Honey mustard', to: 'Dijon + a drizzle of honey', why: 'Same flavor without the bottled-sauce sugar load.', macroDiff: '−8g sugar per 2 tbsp' },
+  { from: 'Nutella', to: 'Natural almond butter + cocoa powder', why: 'Hits the chocolate-hazelnut craving without the palm-oil sugar bomb.', macroDiff: '−10g sugar / +3g protein per 2 tbsp' },
+  { from: 'Heavy cream', to: 'Light coconut milk or evaporated skim', why: 'Same creamy mouthfeel for sauces and coffee.', macroDiff: '−200 kcal / −20g fat per ¼ cup' },
+  { from: 'Cooking butter', to: 'Olive oil or avocado oil', why: 'Swap saturated fat for monounsaturated; small change, daily impact.', macroDiff: 'Similar kcal, cleaner fat profile' },
+  { from: 'Margarine', to: 'Real butter (small amount) or olive oil', why: 'Real fat is more satiating than the spreadable industrial stuff.', macroDiff: 'Similar kcal, removes trans fats' },
+  { from: 'Coffee creamer (flavored)', to: 'Unsweetened almond milk + cinnamon', why: 'Cuts the daily sugar add-on most people don\'t count.', macroDiff: '−60 kcal / −10g sugar per serving' },
+  { from: 'Alfredo / cream pasta sauce', to: 'Marinara + parmesan', why: 'Tomato sauce is 1/4 the calories with real flavor.', macroDiff: '−250 kcal per cup' },
+
+  // ── Dairy / Proteins ───────────────────────────────────────
+  { from: 'Whole milk', to: '2% or unsweetened almond milk', why: 'Quick way to trim fat without losing dairy in coffee/cereal.', macroDiff: '−40 kcal per cup' },
+  { from: 'Yogurt (fruit-on-bottom)', to: 'Plain Greek yogurt + fresh berries', why: 'Most yogurts are dessert. Greek + real fruit doubles the protein.', macroDiff: '+12g protein / −10g sugar' },
+  { from: 'Half & half', to: 'Skim milk + dash of vanilla extract', why: 'Cuts the fat from your daily coffee routine.', macroDiff: '−80 kcal per ¼ cup' },
+  { from: 'Whole eggs (cut phase)', to: '2 egg whites + 1 whole egg', why: 'Keeps yolk flavor while trimming cut-day fat.', macroDiff: '−7g fat / similar protein' },
+  { from: 'Regular bacon', to: 'Center-cut bacon or turkey bacon', why: 'Same breakfast staple with half the fat.', macroDiff: '−40 kcal / −5g fat per 3 strips' },
+  { from: 'Pork sausage', to: 'Chicken sausage', why: 'Same convenience and seasoning, lean protein base.', macroDiff: '−6g fat per link' },
+  { from: 'Pepperoni', to: 'Turkey pepperoni', why: 'Pizza topping that doesn\'t torch the macros.', macroDiff: '−40 kcal / −5g fat per oz' },
+  { from: 'Fried chicken', to: 'Air-fried or baked chicken', why: 'Same crunch and seasoning, no deep-fryer oil load.', macroDiff: '−150 kcal / −15g fat per serving' },
+  { from: 'Bone-in chicken thigh (skin on)', to: 'Skin-off chicken thigh or breast', why: 'Lean protein increase without losing the meal\'s shape.', macroDiff: '−7g fat per 4 oz' },
+  { from: 'Hot dogs', to: 'Chicken or turkey hot dogs', why: 'Cookout staple with cleaner ingredients.', macroDiff: '−5g fat / −60 kcal per dog' },
+  { from: 'Salami / hard sausage', to: 'Smoked turkey breast', why: 'Same charcuterie-board vehicle, lean protein.', macroDiff: '−10g fat per 2 oz' },
+  { from: 'Deli meat (high-sodium)', to: 'Freshly sliced roasted chicken or turkey', why: 'Same sandwich filler, real meat with way less sodium.', macroDiff: '−400 mg sodium / cleaner ingredients' },
+
+  // ── Cooking method swaps ───────────────────────────────────
+  { from: 'Pan-frying in oil', to: 'Air-fryer or oven roast', why: 'Same texture target with a fraction of the fat.', macroDiff: '−100–200 kcal per portion' },
+  { from: 'Tempura / breaded fish', to: 'Pan-seared or grilled fish', why: 'Lean fish should stay lean.', macroDiff: '−150 kcal / −12g fat per fillet' },
+  { from: 'Hashbrowns (fried)', to: 'Roasted potato cubes', why: 'Same starchy side without the oil-soaked mess.', macroDiff: '−120 kcal per ½ cup' },
+  { from: 'Onion rings', to: 'Roasted onion wedges', why: 'Sweet caramelization, none of the batter.', macroDiff: '−250 kcal / −20g fat per side' },
+  { from: 'Whipped cream', to: 'Whipped Greek yogurt + vanilla', why: 'Tangy-sweet topping with real protein.', macroDiff: '+5g protein / −80 kcal per ¼ cup' },
+
+  // ── Takeout / restaurant ───────────────────────────────────
+  { from: 'Burrito (full size)', to: 'Burrito bowl (no tortilla)', why: 'Drops 300 kcal in one move without changing what you eat.', macroDiff: '−300 kcal per meal' },
+  { from: 'General Tso\'s chicken', to: 'Steamed chicken w/ sauce on the side', why: 'You control the sauce ratio — usually cuts intake in half.', macroDiff: '−300 kcal / −20g sugar per entrée' },
+  { from: 'Tempura sushi roll', to: 'Sashimi or hand roll', why: 'Pure protein with rice you can dose, no batter or mayo.', macroDiff: '−200 kcal per roll' },
+  { from: 'Pizza (3 slices)', to: 'Thin-crust 2 slices + side salad', why: 'Same craving served, lower calorie ceiling.', macroDiff: '−300 kcal / +fiber per meal' },
+  { from: 'Buffalo wings (breaded)', to: 'Grilled or naked buffalo wings', why: 'Buffalo sauce is fine — the breading and deep-fry oil aren\'t.', macroDiff: '−150 kcal / −12g fat per 8 wings' },
+  { from: 'Caesar salad (full restaurant size)', to: 'Grilled chicken salad + vinaigrette', why: 'Most "caesars" are 800–1000 kcal because of the dressing.', macroDiff: '−400 kcal per entrée' },
+  { from: 'Mocha (large)', to: 'Americano + a small dark chocolate square', why: 'Same chocolate-coffee combo, fraction of the syrup.', macroDiff: '−300 kcal per drink' },
+  { from: 'Lo mein noodles', to: 'Steamed rice + same protein', why: 'Cuts the oil-soaked noodle calories without giving up the meal.', macroDiff: '−200 kcal per entrée' },
 ];

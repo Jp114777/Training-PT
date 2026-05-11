@@ -14,7 +14,11 @@ export default function FoodSubstitutions({ plan }) {
   return (
     <Card>
       <CardHeader title="Food Substitutions"
-        subtitle="Quick swaps that compound over weeks. Search for the food you're trying to replace."
+        subtitle={
+          q.trim()
+            ? `${filtered.length} of ${plan.substitutions.length} swaps match "${q}"`
+            : `${plan.substitutions.length} swaps that compound over weeks. Search for the food you're trying to replace.`
+        }
         icon={Replace}
         action={
           <div className="relative w-56">
